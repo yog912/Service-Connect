@@ -7,7 +7,7 @@ const serviceSchema = new mongoose.Schema(
     category: { type: String, required: true },
     price: { type: Number, required: true },
     location: { type: String, required: true },
-    provider: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, 
+    provider: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     ratingAverage: { type: Number, default: 0 },
     ratingCount: { type: Number, default: 0 }
   },

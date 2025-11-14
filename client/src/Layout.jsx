@@ -9,20 +9,15 @@ export default function Layout({ user, onLogout, children }) {
           <div className="app-logo">Service Connect</div>
           <nav className="app-nav">
             <Link to="/">Services</Link>
-            {/* we keep dashboard link for future, but it\'s optional */}
-            {/* {user && <Link to="/dashboard">Dashboard</Link>} */}
+            {user?.role === "provider" && <Link to="/dashboard">Dashboard</Link>}
             {!user && <Link to="/login">Login</Link>}
             {!user && <Link to="/register">Register</Link>}
             {user && (
-              <button className="app-logout-btn" onClick={onLogout}>
-                Logout
-              </button>
+              <button className="app-logout-btn" onClick={onLogout}>Logout</button>
             )}
           </nav>
         </header>
-        <main className="app-main">
-          {children}
-        </main>
+        <main className="app-main">{children}</main>
       </div>
     </div>
   );

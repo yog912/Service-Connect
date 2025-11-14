@@ -7,42 +7,32 @@
 body {
   margin: 0;
   padding: 0;
-  background: #0f172a; /* dark blue background */
+  background: #0f172a;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #0f172a;
+  color: #0f172xa;
 }
 
-a {
-  text-decoration: none;
-  color: #2563eb;
-  font-weight: 500;
-}
-
-a:hover {
-  color: #1d4ed8;
-}
-
+/* Root wrapper fills whole screen */
 .app-root {
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 32px 16px;
-  background: radial-gradient(circle at top, #1d4ed8 0, #020617 50%);
+  background: radial-gradient(circle at top, #1d4ed8 0, #020617 55%);
+  padding: 24px;
 }
 
+/* Make the shell almost full width, centered */
 .app-shell {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;        /* wider container */
+  margin: 0 auto;           /* center horizontally */
   background: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.4);
+  border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.45);
   overflow: hidden;
 }
 
 /* Header / Navbar */
 .app-header {
-  padding: 18px 28px;
+  padding: 20px 32px;
   border-bottom: 1px solid #e2e8f0;
   display: flex;
   justify-content: space-between;
@@ -51,20 +41,21 @@ a:hover {
 }
 
 .app-logo {
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 800;
   color: #f9fafb;
 }
 
 .app-nav {
   display: flex;
-  gap: 22px;
+  gap: 24px;
   align-items: center;
   font-size: 16px;
 }
 
 .app-nav a {
   color: #e5e7eb;
+  text-decoration: none;
 }
 
 .app-nav a:hover {
@@ -72,7 +63,7 @@ a:hover {
 }
 
 .app-logout-btn {
-  padding: 7px 14px;
+  padding: 8px 14px;
   background: #ef4444;
   border-radius: 999px;
   border: none;
@@ -80,15 +71,14 @@ a:hover {
   cursor: pointer;
   font-size: 14px;
 }
-
 .app-logout-btn:hover {
   background: #b91c1c;
 }
 
 /* Main area */
 .app-main {
-  padding: 32px 32px 40px;
-  background: linear-gradient(to bottom right, #f8fafc, #e2e8f0);
+  padding: 32px 40px 40px;
+  background: linear-gradient(to bottom right, #f8fafc, #e5e7eb);
 }
 
 /* Services section */
@@ -97,7 +87,7 @@ a:hover {
 }
 
 .services-title {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
   margin-bottom: 4px;
 }
@@ -118,14 +108,14 @@ a:hover {
   background: #ffffff;
   border-radius: 14px;
   padding: 16px 18px;
-  box-shadow: 0 10px 25px rgba(148, 163, 184, 0.4);
+  box-shadow: 0 10px 25px rgba(148, 163, 184, 0.35);
   border: 1px solid #e2e8f0;
 }
 
 .service-title {
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .service-desc {
@@ -145,7 +135,7 @@ a:hover {
   color: #16a34a;
 }
 
-/* Auth card */
+/* Auth card layout */
 .auth-wrapper {
   display: flex;
   justify-content: center;
@@ -153,24 +143,24 @@ a:hover {
 
 .auth-card {
   width: 100%;
-  max-width: 380px;
+  max-width: 420px;
   background: #ffffff;
   border-radius: 16px;
-  padding: 24px 26px;
-  box-shadow: 0 16px 40px rgba(148, 163, 184, 0.5);
+  padding: 28px 28px 30px;
+  box-shadow: 0 16px 42px rgba(148, 163, 184, 0.5);
   border: 1px solid #e2e8f0;
 }
 
 .auth-title {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .auth-input,
@@ -188,7 +178,7 @@ a:hover {
 }
 
 .auth-btn {
-  margin-top: 8px;
+  margin-top: 10px;
   padding: 10px 12px;
   background: #2563eb;
   color: #f9fafb;
@@ -208,9 +198,250 @@ a:hover {
   font-size: 13px;
 }
 
-/* Message when no services */
 .empty-services {
   margin-top: 16px;
   font-size: 14px;
   color: #64748b;
+}
+/* --- Hero section (homepage) --- */
+.hero {
+  margin-bottom: 28px;
+  padding: 26px 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #e0f2fe, #eef2ff);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hero-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.hero-subtitle {
+  font-size: 14px;
+  color: #475569;
+}
+
+.hero-search {
+  margin-top: 6px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hero-search input {
+  flex: 1;
+  min-width: 220px;
+  padding: 9px 11px;
+  border-radius: 999px;
+  border: 1px solid #cbd5f5;
+  font-size: 14px;
+}
+
+.hero-search button {
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: none;
+  background: #2563eb;
+  color: #f9fafb;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hero-search button:hover {
+  background: #1d4ed8;
+}
+
+/* --- Popular categories --- */
+.featured-section {
+  margin-top: 6px;
+}
+
+.category-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+.category-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 12px 14px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 20px rgba(148, 163, 184, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.category-emoji {
+  font-size: 20px;
+}
+
+.category-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.category-sub {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* --- Dashboard layout --- */
+.dash-root {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 10px 30px;
+}
+
+.dash-header-card {
+  background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 12px 30px rgba(148, 163, 184, 0.45);
+  border: 1px solid #bfdbfe;
+}
+
+.dash-header-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #0f172a;
+}
+
+.dash-header-sub {
+  font-size: 14px;
+  color: #475569;
+}
+
+/* Main layout: form + info */
+.dash-main {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.dash-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 18px 18px 20px;
+  box-shadow: 0 10px 25px rgba(148, 163, 184, 0.35);
+  border: 1px solid #e2e8f0;
+}
+
+.dash-card-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #0f172a;
+}
+
+.dash-card-sub {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+/* Add service form */
+.dash-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 14px;
+  margin-top: 10px;
+}
+
+.dash-input,
+.dash-textarea {
+  padding: 9px 10px;
+  border-radius: 7px;
+  border: 1px solid #cbd5f5;
+  font-size: 14px;
+}
+
+.dash-textarea {
+  grid-column: 1 / span 2;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.dash-input:focus,
+.dash-textarea:focus {
+  outline: 2px solid #2563eb;
+  border-color: #2563eb;
+}
+
+.dash-btn {
+  grid-column: 1 / span 2;
+  margin-top: 4px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: none;
+  background: #2563eb;
+  color: #f9fafb;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dash-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Your services section */
+.dash-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.dash-services-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.dash-service-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 18px rgba(148, 163, 184, 0.35);
+}
+
+.dash-service-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.dash-service-desc {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.dash-service-meta {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.dash-service-price {
+  margin-top: 6px;
+  font-weight: 700;
+  color: #16a34a;
+}
+
+/* Fix for dashboard on small screens */
+@media (max-width: 768px) {
+  .dash-main {
+    grid-template-columns: 1fr;
+  }
 }
