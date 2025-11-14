@@ -1,17 +1,19 @@
+const express = require("express");
+const cors = require("cors");
 require("dotenv").config();
-const app = require("./src/app");
-const { connectDB } = require("./src/config/db");
+const connectDB = require("./db");
 
-const PORT = process.env.PORT || 4000;
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-(async () => {
-  try {
-    await connectDB(process.env.MONGO_URI);
-    app.listen(PORT, () => {
-      console.log(`🚀 API listening on http://localhost:${PORT}`);
-    });
-  } catch (err) {
-    console.error("❌ Failed to start server:", err.message);
-    process.exit(1);
-  }
-})();
+// Connect DB
+connectDB();
+
+app.get("/", (req, res) => {
+  res.send("Service Connect API Running...");
+});
+
+app.listen(8080, () => {
+  console.log("Server running on port 8080");
+});
