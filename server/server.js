@@ -12,17 +12,21 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
+// Connect DB
 connectDB();
 
+// Base route
 app.get("/", (req, res) => {
   res.send("Service Connect API Running");
 });
 
+// API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/services", serviceRoutes);
 
+// Correct listener function
 const PORT = process.env.PORT || 8080;
 
-app.listen(process.env.PORT || 8080) => {
+app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
 });
