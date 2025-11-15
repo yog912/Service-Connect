@@ -35,9 +35,12 @@ export default function Dashboard({ user }) {
           description: desc,
         },
         {
-          headers: { Authorization: localStorage.getItem("token") },
+          headers: { 
+            Authorization: "Bearer " + localStorage.getItem("token") 
+          },
         }
       );
+
       setTitle("");
       setCategory("");
       setLocation("");
@@ -52,7 +55,6 @@ export default function Dashboard({ user }) {
 
   return (
     <div className="dash-root">
-      {/* Top Header Summary */}
       <div className="dash-header-card">
         <div className="dash-header-title">Provider Dashboard</div>
         <div className="dash-header-sub">
@@ -60,9 +62,7 @@ export default function Dashboard({ user }) {
         </div>
       </div>
 
-      {/* Main two-column layout */}
       <div className="dash-main">
-        {/* Add Service Card */}
         <div className="dash-card">
           <div className="dash-card-title">Add New Service</div>
           <div className="dash-card-sub">
@@ -70,64 +70,31 @@ export default function Dashboard({ user }) {
           </div>
 
           <form className="dash-form" onSubmit={addService}>
-            <input
-              className="dash-input"
-              placeholder="Service title (e.g. House Cleaning)"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <input
-              className="dash-input"
-              placeholder="Category (e.g. Cleaning, Moving)"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            />
-            <input
-              className="dash-input"
-              placeholder="City / Area"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-            />
-            <input
-              className="dash-input"
-              placeholder="Price (e.g. 50)"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-            />
-            <textarea
-              className="dash-textarea"
-              placeholder="Describe what you offer, what is included, and any special notes."
-              value={desc}
-              onChange={(e) => setDesc(e.target.value)}
-            ></textarea>
-            <button className="dash-btn" type="submit">
-              + Add Service
-            </button>
+            <input className="dash-input" placeholder="Service title" value={title} onChange={(e) => setTitle(e.target.value)} />
+            <input className="dash-input" placeholder="Category" value={category} onChange={(e) => setCategory(e.target.value)} />
+            <input className="dash-input" placeholder="Location" value={location} onChange={(e) => setLocation(e.target.value)} />
+            <input className="dash-input" placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)} />
+            <textarea className="dash-textarea" placeholder="Description" value={desc} onChange={(e) => setDesc(e.target.value)} />
+            <button className="dash-btn" type="submit">+ Add Service</button>
           </form>
         </div>
 
-        {/* Info / Tips card */}
         <div className="dash-card">
           <div className="dash-card-title">Tips for a great listing</div>
           <ul style={{ paddingLeft: "18px", fontSize: "14px", color: "#4b5563", marginTop: "8px" }}>
             <li>Use a clear, descriptive title.</li>
             <li>Add a competitive but fair price.</li>
-            <li>Be specific in your description.</li>
-            <li>Mention what\'s included and what\'s not.</li>
+            <li>Write a detailed description.</li>
+            <li>Mention what is included and what is not.</li>
           </ul>
           <div style={{ marginTop: "14px", fontSize: "13px", color: "#6b7280" }}>
-            You have <b>{services.length}</b> service{services.length === 1 ? "" : "s"} published.
+            You have <b>{services.length}</b> service{services.length === 1 ? "" : "s"}.
           </div>
         </div>
       </div>
 
-      {/* Services list */}
-      <h3 style={{ marginTop: "10px", marginBottom: "10px" }}>Your Services</h3>
-      {services.length === 0 && (
-        <div className="empty-services">
-          You have not added any services yet. Use the form above to create your first one.
-        </div>
-      )}
+      <h3>Your Services</h3>
+      {services.length === 0 && <div>You have not added any services yet.</div>}
 
       <div className="dash-services-grid">
         {services.map((s) => (
@@ -135,11 +102,9 @@ export default function Dashboard({ user }) {
             <div className="dash-service-title">{s.title}</div>
             <div className="dash-service-desc">{s.description}</div>
             <div className="dash-service-meta">
-              {s.category || "No category"} • {s.location || "No location set"}
+              {s.category} • {s.location}
             </div>
-            <div className="dash-service-price">
-              {s.price ? `?${s.price}` : "Price on request"}
-            </div>
+            <div className="dash-service-price">{s.price ? `$${s.price}` : "Price on request"}</div>
           </div>
         ))}
       </div>
